@@ -1330,7 +1330,11 @@
 		  scope.onHandleMouseWheel = function(e){
 			  e.preventDefault();		  
 			  
-			  zoomImage(e.deltaY > 0 ? -0.05 : 0.05);			  
+			  if (e.wheelDelta) {
+                            zoomImage(e.wheelDelta > 0 ? -0.05 : 0.05);							
+			  } else {
+                	    zoomImage(e.deltaY > 0 ? -0.05 : 0.05);							
+			  }			  
 		  };
 
 		  $canvas.addEventListener('mousewheel', scope.onHandleMouseWheel);
